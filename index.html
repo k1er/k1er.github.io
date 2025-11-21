@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Support - Rudy Yang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.47059;
+            color: #1d1d1f;
+            background: #fbfbfd;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 0 60px;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 400;
+            letter-spacing: .007em;
+            color: #6e6e73;
+        }
+
+        .section {
+            margin-bottom: 100px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 600;
+            letter-spacing: 0;
+            color: #1d1d1f;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .app-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .app-card:hover {
+            transform: scale(1.02);
+            box-shadow: 2px 4px 16px rgba(0,0,0,.12);
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 27px;
+            margin: 0 auto 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.12);
+            overflow: hidden;
+            background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .icon-placeholder {
+            font-size: 3.5em;
+            color: white;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .ios-badge {
+            background: rgba(0, 113, 227, 0.1);
+            color: #0071e3;
+        }
+
+        .mac-badge {
+            background: rgba(134, 127, 236, 0.1);
+            color: #867fec;
+        }
+
+        .app-name {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 600;
+            letter-spacing: .009em;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .app-description {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+            margin-bottom: 24px;
+        }
+
+        .app-link {
+            display: inline-block;
+            background: #1d1d1f;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: -0.022em;
+            transition: all 0.3s ease;
+        }
+
+        .app-link:hover {
+            background: #2d2d2f;
+        }
+
+        .contact-section {
+            background: #fff;
+            border-radius: 18px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+        }
+
+        .contact-info {
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: .011em;
+            color: #6e6e73;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .email-link {
+            display: inline-block;
+            background: #1d1d1f;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 21px;
+            font-weight: 500;
+            letter-spacing: .011em;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .email-link:hover {
+            background: #2d2d2f;
+        }
+
+        footer {
+            background: #f5f5f7;
+            color: #6e6e73;
+            text-align: center;
+            padding: 40px 22px;
+            font-size: 12px;
+            line-height: 1.33337;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-top: 100px;
+        }
+
+        @media (max-width: 1068px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            .subtitle {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .apps-grid {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 734px) {
+            header {
+                padding: 60px 0 40px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .subtitle {
+                font-size: 21px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .app-card {
+                padding: 32px 24px;
+            }
+
+            .contact-section {
+                padding: 40px 24px;
+            }
+
+            .section {
+                margin-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>App Support</h1>
+            <p class="subtitle">Quality Apps by Rudy Yang</p>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">Our Apps</h2>
+            <div class="apps-grid">
+                <div class="app-card">
+                    <div class="app-icon" id="icon-ruler">
+                        <span class="icon-placeholder">📏</span>
+                    </div>
+                    <span class="platform-badge ios-badge">iOS • iPadOS</span>
+                    <h3 class="app-name">Ruler</h3>
+                    <p class="app-description">
+                        A portable measuring tool that allows you to easily measure various lengths using your iPhone or iPad. Supports both centimeters and inches with high accuracy.
+                    </p>
+                    <a href="https://apps.apple.com/us/app/ruler-a-accurate-screen-ruler/id1174757735" class="app-link" target="_blank">View on App Store</a>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-icon" id="icon-protractor">
+                        <span class="icon-placeholder">📐</span>
+                    </div>
+                    <span class="platform-badge ios-badge">iOS • iPadOS</span>
+                    <h3 class="app-name">Protractor Edge</h3>
+                    <p class="app-description">
+                        A smart instrument to measure angles with precision. Simple and intuitive interface makes it perfect for students, engineers, and DIY enthusiasts.
+                    </p>
+                    <a href="https://apps.apple.com/us/app/protractor-edge-angle-measure/id1499078532" class="app-link" target="_blank">View on App Store</a>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-icon" id="icon-storeshots">
+                        <span class="icon-placeholder">📱</span>
+                    </div>
+                    <span class="platform-badge ios-badge">iOS • iPadOS</span>
+                    <h3 class="app-name">StoreShots</h3>
+                    <p class="app-description">
+                        Free screenshot generator with one-click magic. Creates professional, device-optimized images to boost downloads by up to 30%.
+                    </p>
+                    <a href="https://apps.apple.com/us/app/storeshots-create-store-shots/id6747141086" class="app-link" target="_blank">View on App Store</a>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-icon" id="icon-autoclicker">
+                        <span class="icon-placeholder">🖱️</span>
+                    </div>
+                    <span class="platform-badge mac-badge">macOS</span>
+                    <h3 class="app-name">AutoClicker</h3>
+                    <p class="app-description">
+                        Powerful macOS automation assistant. Features precision recording, smart playback, scheduled tasks, and hotkey support for workflow automation.
+                    </p>
+                    <a href="https://apps.apple.com/cn/app/autoclicker-bot/id6748926231?mt=12" class="app-link" target="_blank">View on App Store</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="contact-section">
+                <h2 class="section-title">Contact & Support</h2>
+                <p class="contact-info">
+                    We value your feedback and suggestions. If you have any questions, comments, or ideas for improving our apps, please don't hesitate to reach out to us.
+                </p>
+                <p class="contact-info" style="margin-top: 15px;">
+                    Need a custom solution? We also offer tailored app development services. Contact us to discuss your specific requirements and bring your ideas to life.
+                </p>
+                <a href="mailto:ankek1er@gmail.com" class="email-link">ankek1er@gmail.com</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Copyright © 2025 Rudy Yang. All rights reserved.</p>
+    </footer>
+
+    <script>
+        async function loadAppIcon(appId, elementId) {
+            try {
+                const response = await fetch(`https://itunes.apple.com/lookup?id=${appId}`);
+                const data = await response.json();
+                
+                if (data.results && data.results.length > 0) {
+                    const iconUrl = data.results[0].artworkUrl512 || data.results[0].artworkUrl100;
+                    const iconElement = document.getElementById(elementId);
+                    
+                    if (iconUrl && iconElement) {
+                        const img = document.createElement('img');
+                        img.src = iconUrl;
+                        img.alt = 'App Icon';
+                        img.onload = () => {
+                            iconElement.style.background = 'transparent';
+                            iconElement.innerHTML = '';
+                            iconElement.appendChild(img);
+                        };
+                    }
+                }
+            } catch (error) {
+                console.log('Could not load icon for app:', appId);
+            }
+        }
+
+        loadAppIcon('1174757735', 'icon-ruler');
+        loadAppIcon('1499078532', 'icon-protractor');
+        loadAppIcon('6747141086', 'icon-storeshots');
+        loadAppIcon('6748926231', 'icon-autoclicker');
+    </script>
+</body>
+</html>
